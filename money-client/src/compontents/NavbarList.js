@@ -51,7 +51,7 @@ class NavBarList extends Component {
             </DropdownMenu>
           </Dropdown>
           <NavItem>
-            <NavLink href="/charttime">MOUNTHLY</NavLink>
+            <NavLink href="/charttime">MONTHLY</NavLink>
           </NavItem>
           {/* <NavItem>
             <NavLink href="/tree">TREE</NavLink>
