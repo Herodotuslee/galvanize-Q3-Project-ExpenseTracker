@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 
 import { Container, Row, Col } from "reactstrap";
-import Add from "./Add";
-import Show from "./ShowTodayCreate";
-// import Total from "./Total";
+import AddExpense from "./AddExpense";
 import Chart from "./Chart";
 import ShowTodayCreate from "./ShowTodayCreate";
 class MainPage extends Component {
@@ -13,7 +11,7 @@ class MainPage extends Component {
         <Container>
           <Row>
             <Col>
-              <Add />
+              <AddExpense />
             </Col>
             <Col>
               <Chart legendPosition="bottom" />

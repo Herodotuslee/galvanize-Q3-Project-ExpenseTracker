@@ -1,11 +1,26 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
-import { Container } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import { connect } from "react-redux";
+import EachMonth from "./EachMonth";
 import moment from "moment";
 class Chart extends Component {
   state = {
-    chartData: null
+    chartData: null,
+    ChooseMonth: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
   };
 
   // TOTAL
@@ -50,6 +65,12 @@ class Chart extends Component {
     return Total;
   };
 
+  renderList() {
+    return this.state.ChooseMonth.map(item => {
+      return <EachMonth ChooseMonth={item} />;
+    });
+  }
+
   render() {
     let data = {
       labels: [
@@ -83,7 +104,7 @@ class Chart extends Component {
           type: "line",
           lineTension: 0,
           fill: false,
-          borderColor: ["rgba(255, 121, 121,1.0)"]
+          borderColor: ["rgba(255, 99, 132, 0.6)"]
         },
         {
           label: "FOOD",
@@ -92,7 +113,7 @@ class Chart extends Component {
           type: "line",
           lineTension: 0,
           fill: false,
-          borderColor: ["rgba(186, 220, 88,1.0)"]
+          borderColor: ["rgba(54, 162, 235, 0.6)"]
         },
         {
           label: "Transportation",
@@ -101,7 +122,7 @@ class Chart extends Component {
           type: "line",
           lineTension: 0,
           fill: false,
-          borderColor: ["rgba(223, 249, 251,1.0)"]
+          borderColor: ["rgba(255, 206, 86, 0.6)"]
         },
         {
           label: "Bills",
@@ -110,7 +131,7 @@ class Chart extends Component {
           type: "line",
           lineTension: 0,
           fill: false,
-          borderColor: ["rgba(224, 86, 253,1.0)"]
+          borderColor: ["rgba(75, 192, 192, 0.6)"]
         },
         {
           label: "Social",
@@ -119,7 +140,7 @@ class Chart extends Component {
           type: "line",
           lineTension: 0,
           fill: false,
-          borderColor: ["rgba(104, 109, 224,1.0)"]
+          borderColor: ["rgba(153, 102, 255, 0.6)"]
         },
         {
           label: "Groceries",
@@ -128,7 +149,7 @@ class Chart extends Component {
           type: "line",
           lineTension: 0,
           fill: false,
-          borderColor: ["#00cec9"]
+          borderColor: ["rgba(255, 159, 64, 0.6)"]
         },
         {
           label: "Gift",
@@ -146,7 +167,7 @@ class Chart extends Component {
           type: "line",
           lineTension: 0,
           fill: false,
-          borderColor: ["rgba(34, 166, 179,1.0)"]
+          borderColor: ["rgba(50, 255, 126)"]
         }
       ]
     };
@@ -155,10 +176,10 @@ class Chart extends Component {
         <Line
           data={data}
           options={{
-            title: { display: true, text: "2018 Expense", fontSize: 25 },
-            legend: { display: true, position: "right" }
+            title: { display: true, text: "2018 Expense", fontSize: 25 }
           }}
         />
+        <Row> {this.renderList()}</Row>
       </Container>
     );
   }

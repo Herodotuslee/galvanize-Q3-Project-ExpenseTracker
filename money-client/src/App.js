@@ -9,7 +9,6 @@ import PieChart from "./compontents/PieChart";
 import BarChart from "./compontents/BarChart";
 import ShowDatePage from "./compontents/ShowDatePage";
 import ChartTime from "./compontents/ChartTime";
-import TreePage from "./compontents/TreePage";
 
 class App extends Component {
   render() {
@@ -26,7 +25,6 @@ class App extends Component {
             <Route exact path="/BarChart" component={BarChart} />
             <Route exact path="/ChartTime" component={ChartTime} />
             <Route exact path="/ShowDatePage" component={ShowDatePage} />
-            <Route exact path="/tree" component={TreePage} />
           </Switch>
         </div>
       </BrowserRouter>

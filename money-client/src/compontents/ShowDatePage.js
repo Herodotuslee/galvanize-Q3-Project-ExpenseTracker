@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Table, Container } from "reactstrap";
+import { Table, Container, Row, Col } from "reactstrap";
 import Calendar from "react-calendar";
 import ShowDateItem from "./ShowDateItem";
 import moment from "moment";
+import PieChooseDate from "./PieChooseDate";
 // import Picker from "react-month-picker";
 class ShowDatePage extends Component {
   state = {
@@ -38,15 +39,24 @@ class ShowDatePage extends Component {
   render() {
     return (
       <Container>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            margin: `2em 0 2em 0`
-          }}
-        >
-          <Calendar onChange={this.onChange} value={this.state.date} />
-        </div>
+        <Row>
+          <Col>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                margin: `2em 0 2em 0`
+              }}
+            >
+              <Calendar onChange={this.onChange} value={this.state.date} />
+            </div>
+          </Col>
+          <Col>
+            <PieChooseDate
+              Choosedate={moment(this.state.date).format("YYYY-MM-DD")}
+            />
+          </Col>
+        </Row>
 
         <Table striped>
           <thead>

@@ -54,7 +54,7 @@ class EditPage extends Component {
     this.props.history.push("/");
   };
 
-  onChange = date => this.setState({ date });
+  onChange = date => this.setState({ ...date });
 
   render() {
     return (

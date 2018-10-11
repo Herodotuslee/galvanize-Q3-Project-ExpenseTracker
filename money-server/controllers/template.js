@@ -20,7 +20,6 @@ module.exports = {
   },
 
   addOneExpense: (req, res) => {
-    console.log("here", req.body);
     knex("expense")
       .insert({
         content: req.body.content,
@@ -30,7 +29,6 @@ module.exports = {
       })
       .returning("*")
       .then(result => {
-        // console.log("add", result);
         res.json(result[0]);
       });
   },
