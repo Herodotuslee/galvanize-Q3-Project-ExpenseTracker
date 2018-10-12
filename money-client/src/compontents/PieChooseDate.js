@@ -11,7 +11,7 @@ class PieChartChooseDate extends Component {
 
   showall = expense => {
     let output = [];
-    for (let i = 1; i < 8; i++) {
+    for (let i = 1; i < 9; i++) {
       output.push(this.calculateTotal(expense, i));
     }
     return output;
@@ -40,6 +40,7 @@ class PieChartChooseDate extends Component {
         "Food",
         "Transportation",
         "Bills",
+        "Social",
         "Groceries",
         "Grft",
         "Others"
@@ -53,6 +54,7 @@ class PieChartChooseDate extends Component {
             "rgba(54, 162, 235, 0.6)",
             "rgba(255, 206, 86, 0.6)",
             "rgba(75, 192, 192, 0.6)",
+            "rgba(199, 236, 238, 1.0)",
             "rgba(153, 102, 255, 0.6)",
             "rgba(255, 159, 64, 0.6)",
             "rgba(50, 255, 126)"

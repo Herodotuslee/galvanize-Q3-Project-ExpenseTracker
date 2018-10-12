@@ -30,7 +30,7 @@ class EachMonthPie extends Component {
   };
   render() {
     if (this.props.expense.length === 0) {
-      return <div>Loading</div>;
+      return <div />;
     }
     let data = {
       labels: [
@@ -52,6 +52,7 @@ class EachMonthPie extends Component {
             "rgba(255, 206, 86, 0.6)",
             "rgba(75, 192, 192, 0.6)",
             "rgba(153, 102, 255, 0.6)",
+            "rgba(199, 236, 238, 1.0)",
             "rgba(255, 159, 64, 0.6)",
             "rgba(50, 255, 126)"
           ]
