@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Pie } from "react-chartjs-2";
 import { connect } from "react-redux";
-import { Container } from "reactstrap";
 import moment from "moment";
 
 class EachMonthPie extends Component {
@@ -9,83 +8,26 @@ class EachMonthPie extends Component {
     chartData: null
   };
 
-  calculateRentTotal = () => {
-    console.log("choose", moment(this.state.ChooseMonth).format("MMMM"));
-    let expense1 = this.props.expense
+  showall = expense => {
+    let output = [];
+    for (let i = 1; i < 9; i++) {
+      output.push(this.calculateTotal(expense, i));
+    }
+    return output;
+  };
+
+  calculateTotal = (expense, cat) => {
+    let expenseFilted = this.props.expense
       .filter(
         item => moment(item.date).format("MMMM") === this.props.ChooseMonth
       )
-      .filter(expense => expense.category_id === 1);
-    let rentTotal = expense1.reduce((acc, expense) => acc + expense.money, 0);
+      .filter(expense => expense.category_id === cat);
+    let rentTotal = expenseFilted.reduce(
+      (acc, expense) => acc + expense.money,
+      0
+    );
     return rentTotal;
   };
-
-  calculateFoodTotal = expense => {
-    let expense2 = this.props.expense
-      .filter(
-        item => moment(item.date).format("MMMM") === this.props.ChooseMonth
-      )
-      .filter(expense => expense.category_id === 2);
-    let foodTotal = expense2.reduce((acc, expense) => acc + expense.money, 0);
-    return foodTotal;
-  };
-
-  calculateTransportationTotal = () => {
-    let expense3 = this.props.expense
-      .filter(
-        item => moment(item.date).format("MMMM") === this.props.ChooseMonth
-      )
-      .filter(expense => expense.category_id === 3);
-    let transportationTotal = expense3.reduce(
-      (acc, expense) => acc + expense.money,
-      0
-    );
-    return transportationTotal;
-  };
-
-  calculateBillsTotal = () => {
-    let expense3 = this.props.expense
-      .filter(
-        item => moment(item.date).format("MMMM") === this.props.ChooseMonth
-      )
-      .filter(expense => expense.category_id === 4);
-    let Bills = expense3.reduce((acc, expense) => acc + expense.money, 0);
-    return Bills;
-  };
-
-  calculateGroceriesTotal = () => {
-    let expense3 = this.props.expense
-      .filter(
-        item => moment(item.date).format("MMMM") === this.props.ChooseMonth
-      )
-      .filter(expense => expense.category_id === 5);
-    let GroceriesTotal = expense3.reduce(
-      (acc, expense) => acc + expense.money,
-      0
-    );
-    return GroceriesTotal;
-  };
-
-  calculateGriftTotal = () => {
-    let expense3 = this.props.expense
-      .filter(
-        item => moment(item.date).format("MMMM") === this.props.ChooseMonth
-      )
-      .filter(expense => expense.category_id === 6);
-    let GriftTotal = expense3.reduce((acc, expense) => acc + expense.money, 0);
-    return GriftTotal;
-  };
-
-  calculateOthersTotal = () => {
-    let expense3 = this.props.expense
-      .filter(
-        item => moment(item.date).format("MMMM") === this.props.ChooseMonth
-      )
-      .filter(expense => expense.category_id === 7);
-    let OthersTotal = expense3.reduce((acc, expense) => acc + expense.money, 0);
-    return OthersTotal;
-  };
-
   render() {
     if (this.props.expense.length === 0) {
       return <div>Loading</div>;
@@ -103,15 +45,7 @@ class EachMonthPie extends Component {
       datasets: [
         {
           label: "Money",
-          data: [
-            this.calculateRentTotal(),
-            this.calculateFoodTotal(),
-            this.calculateTransportationTotal(),
-            this.calculateBillsTotal(),
-            this.calculateGroceriesTotal(),
-            this.calculateGriftTotal(),
-            this.calculateOthersTotal()
-          ],
+          data: this.showall(this.props.expense),
           backgroundColor: [
             "rgba(255, 99, 132, 0.6)",
             "rgba(54, 162, 235, 0.6)",

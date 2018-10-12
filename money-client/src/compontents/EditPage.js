@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import DatePicker from "react-date-picker";
 import { Container } from "reactstrap";
+// import moment from "moment";
 
 import { addExpense } from "../actions/expense";
 class EditPage extends Component {
@@ -120,7 +121,9 @@ class EditPage extends Component {
 
 const mapStateToProps = ({ expense }, props) => {
   return {
-    expense: expense.find(expense => expense.id == props.match.params.id)
+    expense: expense.find(
+      expense => expense.id === Number(props.match.params.id)
+    )
   };
 };
 

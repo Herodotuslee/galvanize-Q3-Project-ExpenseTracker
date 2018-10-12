@@ -38,7 +38,8 @@ module.exports = {
       .where("id", req.params.Expense_id)
       .update({
         money: req.body.money,
-        content: req.body.content
+        content: req.body.content,
+        date: req.body.content
       })
       .returning("*")
       .then(result => {

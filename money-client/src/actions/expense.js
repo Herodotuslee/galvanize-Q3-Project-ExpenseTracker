@@ -47,7 +47,6 @@ export const addExpense = expense => dispatch => {
 };
 
 export const updateExpense = (expense, id) => dispatch => {
-  console.log("hi");
   return axios
     .post(`http://localhost:8000/api/expense/edit/${id}`, expense)
     .then(response => {
