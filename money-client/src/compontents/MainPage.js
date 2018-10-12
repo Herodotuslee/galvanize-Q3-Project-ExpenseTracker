@@ -4,6 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 import AddExpense from "./AddExpense";
 import Chart from "./Chart";
 import ShowTodayCreate from "./ShowTodayCreate";
+
 class MainPage extends Component {
   render() {
     return (

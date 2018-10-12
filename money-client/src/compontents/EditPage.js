@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { withRouter } from "react-router-dom";
 import DatePicker from "react-date-picker";
 import { Container } from "reactstrap";
+import MyApp from "./MyApp";
 // import moment from "moment";
 
 import { addExpense } from "../actions/expense";
@@ -13,7 +14,7 @@ class EditPage extends Component {
     money: "",
     content: "",
     category_id: "1",
-    date: ""
+    date: new Date()
   };
 
   componentDidMount() {
@@ -44,18 +45,25 @@ class EditPage extends Component {
     });
   };
 
+  handleChangeDate = e => {
+    this.setState({
+      content: e.target.value
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.addExpense(this.state).then(() => {
       this.setState({
         money: "",
-        content: ""
+        content: "",
+        date: ""
       });
     });
     this.props.history.push("/");
   };
 
-  onChange = date => this.setState({ ...date });
+  onChange = date => this.setState({ date });
 
   render() {
     return (
@@ -103,11 +111,12 @@ class EditPage extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <DatePicker
+            {/* <MyApp /> */}
+            {/* <DatePicker
               id="date"
               onChange={this.onChange}
               value={this.state.date}
-            />
+            /> */}
           </FormGroup>
 
           <Button type="submit" color="primary">

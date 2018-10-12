@@ -15,10 +15,13 @@ class PieChart extends Component {
   };
 
   calculateTotal = (expense, cat) => {
-    let expense1 = this.props.expense.filter(
+    let expenseFilter = this.props.expense.filter(
       expense => expense.category_id === cat
     );
-    let rentTotal = expense1.reduce((acc, expense) => acc + expense.money, 0);
+    let rentTotal = expenseFilter.reduce(
+      (acc, expense) => acc + expense.money,
+      0
+    );
     return rentTotal;
   };
   render() {
