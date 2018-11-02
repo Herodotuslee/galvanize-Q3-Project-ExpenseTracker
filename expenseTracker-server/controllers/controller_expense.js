@@ -2,10 +2,8 @@ const knex = require("../db/knex.js");
 
 module.exports = {
   index: function(req, res) {
-    res.send("Hello");
+    res.send("Helo, ther server is runing ^^ ");
   },
-
-  // FOR ExpenseLIST
 
   getExpenseList: (req, res) => {
     knex("expense").then(result => {

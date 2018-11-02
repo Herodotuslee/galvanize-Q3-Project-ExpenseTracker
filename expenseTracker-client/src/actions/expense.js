@@ -23,7 +23,7 @@ export const fetchExpense = () => dispatch => {
 
 export const deleteExpense = id => dispatch => {
   axios
-    .get(`http://localhost:8000/api/expense/delete/${id}`)
+    .delete(`http://localhost:8000/api/expense/delete/${id}`)
     .then(response => dispatch({ type: DELETE_EXPENSE_SUCCESS, payload: id }))
     .catch(err => dispatch({ type: DELETE_EXPENSE_FAILED, payload: err }));
 };
@@ -48,7 +48,7 @@ export const addExpense = expense => dispatch => {
 
 export const updateExpense = (expense, id) => dispatch => {
   return axios
-    .post(`http://localhost:8000/api/expense/edit/${id}`, expense)
+    .patch(`http://localhost:8000/api/expense/edit/${id}`, expense)
     .then(response => {
       dispatch({
         type: UPDATE_EXPENSE_SUCCESS,
